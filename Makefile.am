@@ -282,6 +282,12 @@ src_libdrivers_la_SOURCES += \
 	src/hardware/demo/protocol.c \
 	src/hardware/demo/api.c
 endif
+if HW_DIGILENT_ANALOGDISCOVERY2
+src_libdrivers_la_SOURCES += \
+	src/hardware/digilent-analogdiscovery2/protocol.h \
+	src/hardware/digilent-analogdiscovery2/protocol.c \
+	src/hardware/digilent-analogdiscovery2/api.c
+endif
 if HW_DREAMSOURCELAB_DSLOGIC
 src_libdrivers_la_SOURCES += \
 	src/hardware/dreamsourcelab-dslogic/protocol.h \
