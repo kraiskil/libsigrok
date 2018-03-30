@@ -74,6 +74,12 @@ The following drivers/devices require a firmware upload upon connection:
       These can be extracted from the vendor's Windows drivers using a tool
       from our 'sigrok-util' repository/project.
 
+ - digilent-analogdiscovery2: The sigrok driver for AnalogDiscovery2 uses
+   Digilent's 'Waveforms' library for communications and configuration.
+   This library is not open source, but is available gratis on Digilent's
+   website for select OS/CPU combinations.
+
+
 The following drivers/devices do not need any firmware upload:
 
  - agilent-dmm

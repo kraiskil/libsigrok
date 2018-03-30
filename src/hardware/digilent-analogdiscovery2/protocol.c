@@ -1,7 +1,7 @@
 /*
  * This file is part of the libsigrok project.
- * It implements data parsing via Digilent's Adept
- * interface, particularly the AnalogDiscovery2 device.
+ * It implements data parsing via Digilent's Waveforms
+ * SDK, particularly the AnalogDiscovery2 device.
  *
  * Copyright 2018 Kalle Raiskila <kraiskil@iki.fi>
  *

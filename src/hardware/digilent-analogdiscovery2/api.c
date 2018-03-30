@@ -2,7 +2,7 @@
  * This file is part of the libsigrok project.
  * It implmenets the adaptation interface to sigrok
  * for Digilent's AnalogDiscovery2 device, using
- * Digilent's Adept framework.
+ * Digilent's Waveforms SDK.
  *
  * Copyright 2018 Kalle Raiskila <kraiskil@iki.fi>
  *
@@ -21,7 +21,12 @@
  */
 
 #include <config.h>
+#include <stdbool.h>
+#include <stdlib.h>
+/* Sigrok includes */
 #include "protocol.h"
+/* Digilent includes */
+#include "digilent/waveforms/dwf.h"
 
 static GSList *scan(struct sr_dev_driver *di, GSList *options)
 {
@@ -36,6 +41,7 @@ static GSList *scan(struct sr_dev_driver *di, GSList *options)
 
 	/* TODO: scan for devices, either based on a SR_CONF_CONN option
 	 * or on a USB scan. */
+	FDwfDeviceOpen(-1, NULL);
 
 	return devices;
 }

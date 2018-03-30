@@ -130,6 +130,23 @@ SR_ARG_OPT_CHECK([libieee1284], [LIBIEEE1284],, [
 AS_IF([test "x$sr_have_libieee1284" = xyes],
 	[SR_PREPEND([SR_EXTRA_LIBS], [-lieee1284])])
 
+
+SR_ARG_OPT_CHECK([digilentwaveforms], [DIGILENTWAVEFORMS],, [
+	sr_save_LIBS=$LIBS
+	LIBS="-ldwf $LIBS"
+	AC_LINK_IFELSE([
+		AC_LANG_PROGRAM(
+			[[#include <stdbool.h>
+			#include <stdlib.h>
+			#include "digilent/waveforms/dwf.h"]],
+			[[(void) FDwfDeviceOpen(-1, NULL);]])],
+		[sr_have_digilentwaveforms=yes], [sr_have_digilentwaveforms=no])
+	LIBS=$sr_save_LIBS
+])
+AS_IF([test "x$sr_have_digilentwaveforms" = xyes],
+	[SR_PREPEND([SR_EXTRA_LIBS], [-ldwf])])
+
+
 ######################
 ##  Feature checks  ##
 ######################
@@ -233,7 +250,7 @@ SR_DRIVER([ChronoVu LA], [chronovu-la], [libusb libftdi])
 SR_DRIVER([Colead SLM], [colead-slm], [libserialport])
 SR_DRIVER([Conrad DIGI 35 CPU], [conrad-digi-35-cpu], [libserialport])
 SR_DRIVER([demo], [demo])
-SR_DRIVER([Digilent AnalogDiscovery2], [digilent-analogdiscovery2])
+SR_DRIVER([Digilent AnalogDiscovery2], [digilent-analogdiscovery2], [digilentwaveforms])
 SR_DRIVER([DreamSourceLab DSLogic], [dreamsourcelab-dslogic], [libusb])
 SR_DRIVER([Fluke DMM], [fluke-dmm], [libserialport])
 SR_DRIVER([FTDI LA], [ftdi-la], [libusb libftdi])
